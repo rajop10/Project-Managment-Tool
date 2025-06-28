@@ -1,20 +1,27 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project Managment Tool</title>
-    <link rel="stylesheet" href="styles.css"/>
+  <meta charset="UTF-8">
+  <title>Project Management Tool</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body >
-    <div class="container">
-        <h2 id="box1">Project Managment Tool</h2>
-        <form action="/submit" method="post">
-            <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" id="username" name="username" required>
-            </div>
-        </form>
-    </div>
+<body>
+
+  <h1>📋 Project Management Tool</h1>
+
+  <!-- 🔹 Project Creation Form -->
+  <form id="project-form">
+    <input type="text" id="project-name" placeholder="Enter project name" required>
+    <button type="submit">Add Project</button>
+  </form>
+
+  <!-- 🔹 Project List Display -->
+  <h2>📁 Projects</h2>
+  <ul id="project-list">
+    <!-- Projects yahan dynamically add honge -->
+  </ul>
+
+  <script src="script.js"></script>
 </body>
 </html>
