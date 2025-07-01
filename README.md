@@ -22,7 +22,7 @@ I will build this project step-by-step:
 3. Create a backend using Node.js and Express 🛠️  
 4. Connect frontend to backend using API calls 🔗  
 5. Add task management inside each project 📝  
-6. (Optional) Add user login/logout system 🔐
+6. Add user login/logout system 🔐
 
 ---
 
