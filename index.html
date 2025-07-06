@@ -7,6 +7,7 @@
 </head>
 <body>
   <div class="container">
+    
     <header>
       <h1>📋 Project Management Tool</h1>
       <div class="login-signup">
@@ -14,24 +15,18 @@
       </div>
     </header>
 
-    <!-- Project Creation Section -->
-    <section class="project-section">
-      <h2>🆕 Create New Project</h2>
+    <!-- Combined Project + Task Section -->
+    <section class="project-task-section">
+      <h2>🆕 Create Project & Tasks</h2>
+
+      <!-- Project Form -->
       <form id="project-form">
         <input type="text" id="project-name" placeholder="Enter project name" required>
         <input type="text" id="project-desc" placeholder="Enter project description">
         <button type="submit">➕ Add Project</button>
       </form>
 
-      <h2>📁 Your Projects</h2>
-      <ul id="project-list">
-        <!-- Projects will be dynamically inserted here -->
-      </ul>
-    </section>
-
-    <!-- Task Management Section -->
-    <section class="task-section">
-      <h2>📂 Tasks for Selected Project</h2>
+      <!-- Task Form -->
       <form id="task-form">
         <input type="text" id="task-name" placeholder="Enter task name" required>
         <select id="task-status">
@@ -42,6 +37,14 @@
         <button type="submit">➕ Add Task</button>
       </form>
 
+      <!-- Project List -->
+      <h2>📁 Your Projects</h2>
+      <ul id="project-list">
+        <!-- Projects will be dynamically inserted here -->
+      </ul>
+
+      <!-- Task List -->
+      <h2>📂 Tasks for Selected Project</h2>
       <ul id="task-list">
         <!-- Tasks will be dynamically inserted here -->
       </ul>
