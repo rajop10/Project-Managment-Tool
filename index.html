@@ -4,30 +4,29 @@
   <meta charset="UTF-8">
   <title>Project Management Tool</title>
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="container">
-    
-    <header>
+  <div class="container fade-in">
+    <header class="slide-down">
       <h1>📋 Project Management Tool</h1>
       <div class="login-signup">
-        <a href="login.html">🔒 Logout</a>
+        <a href="login.html" class="btn-pulse">🔒 Logout</a>
       </div>
     </header>
 
-    <!-- Combined Project + Task Section -->
-    <section class="project-task-section">
-      <h2>🆕 Create Project & Tasks</h2>
+    <section class="project-task-section slide-in">
+      <h2 class="zoom-in">🆕 Create Project & Tasks</h2>
 
       <!-- Project Form -->
-      <form id="project-form">
+      <form id="project-form" class="form bounce-in">
         <input type="text" id="project-name" placeholder="Enter project name" required>
         <input type="text" id="project-desc" placeholder="Enter project description">
         <button type="submit">➕ Add Project</button>
       </form>
 
       <!-- Task Form -->
-      <form id="task-form">
+      <form id="task-form" class="form bounce-in">
         <input type="text" id="task-name" placeholder="Enter task name" required>
         <select id="task-status">
           <option value="todo">🕓 To Do</option>
@@ -37,21 +36,31 @@
         <button type="submit">➕ Add Task</button>
       </form>
 
+      <!-- Filter -->
+      <div class="filter-section">
+        <label for="filter-status">Filter Tasks:</label>
+        <select id="filter-status">
+          <option value="all">All</option>
+          <option value="todo">🕓 To Do</option>
+          <option value="in-progress">🚧 In Progress</option>
+          <option value="done">✅ Done</option>
+        </select>
+      </div>
+
       <!-- Project List -->
-      <h2>📁 Your Projects</h2>
-      <ul id="project-list">
-        <!-- Projects will be dynamically inserted here -->
-      </ul>
+      <h2 class="zoom-in">📁 Your Projects</h2>
+      <ul id="project-list" class="list animated-list"></ul>
+
+      <!-- Current Project Display -->
+      <h3 id="current-project-title" class="fade-in">📌 No project selected</h3>
 
       <!-- Task List -->
-      <h2>📂 Tasks for Selected Project</h2>
-      <ul id="task-list">
-        <!-- Tasks will be dynamically inserted here -->
-      </ul>
+      <h2 class="zoom-in">📂 Tasks for Selected Project</h2>
+      <ul id="task-list" class="list animated-list"></ul>
     </section>
 
-    <footer>
-      <p>&copy; 2025 Project Management Tool | Made with ❤️</p>
+    <footer class="slide-up">
+      <p>&copy; 2025 Project Management Tool | Made by Raj</p>
     </footer>
   </div>
 

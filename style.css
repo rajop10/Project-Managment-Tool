@@ -1,169 +1,82 @@
-/* Make body full height with background */
+/* General Reset */
+* {
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 body {
   margin: 0;
+  padding: 0;
   height: 100vh;
-  font-family: Arial, sans-serif;
-  background-image: url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1350&q=80');
+  background-image: url('https://images.pexels.com/photos/842711/pexels-photo-842711.jpeg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  color: #fff;
+  background-attachment: fixed;
   display: flex;
   justify-content: center;
   align-items: center;
+  color: #fff;
   text-align: center;
 }
 
-/* Container to center everything */
-.container {
-  width: 100%;
-  max-width: 600px;
-  padding: 20px;
-  background-color: rgba(0, 0, 0, 0.6);
-  border-radius: 15px;
-  backdrop-filter: blur(6px);
-}
-
-/* Common styles */
-header, section, footer {
-  margin-bottom: 20px;
-}
-
-h1, h2 {
-  margin-bottom: 15px;
-}
-
-input, select, button {
-  padding: 10px;
-  margin: 8px auto;
-  width: 90%;
-  max-width: 400px;
-  display: block;
-  border-radius: 8px;
-  border: none;
-  font-size: 16px;
-}
-
-button {
-  background-color: #28a745;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-button:hover {
-  background-color: #218838;
-}
-
-ul {
-  list-style: none;
-  padding-left: 0;
-}
-
-li {
-  padding: 10px;
-  background: rgba(255, 255, 255, 0.1);
-  margin: 5px auto;
-  border-radius: 5px;
-  max-width: 400px;
-}
-
-.login-signup {
-  text-align: right;
-  margin-bottom: 10px;
-}
-
-.login-signup a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-footer {
-  font-size: 14px;
-  margin-top: 20px;
-}
-/* Responsive styles */
-@media (max-width: 600px) {   
-  body {
-    padding: 10px;
-  }
-
-  .container {
-    width: 100%;
-    padding: 15px;
-  }
-
-  input, select, button {
-    width: calc(100% - 20px);
-  }
-}
-
-/* style.css */
-body {
-  margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(to right, #ece9e6, #ffffff);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  animation: fadeBg 2s ease;
-  background-image: url("https://images.pexels.com/photos/842711/pexels-photo-842711.jpeg");
-}
-
+/* Container */
 .container {
   width: 90%;
   max-width: 1000px;
-  background: #ffffff;
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+  border-radius: 15px;
   padding: 30px;
   animation: fadeSlideUp 1s ease;
+  color: white;
 }
 
+/* Header */
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 30px;
-  animation: fadeIn 1.5s ease;
+  animation: slideDown 1s ease-in-out;
 }
 
 header h1 {
   font-size: 28px;
-  color: #333;
+  color: #fff;
 }
 
 .login-signup a {
   text-decoration: none;
   font-weight: bold;
-  color: #007bff;
+  color: #28a745;
   transition: color 0.3s ease;
 }
 
 .login-signup a:hover {
-  color: #0056b3;
+  color: #fff;
 }
 
-h2 {
-  color: #444;
+h2, h3 {
+  color: #fff;
   margin-bottom: 10px;
-  animation: fadeIn 1s ease;
+  animation: zoomIn 1s ease;
 }
 
+/* Forms */
 form {
   display: flex;
   gap: 10px;
   margin-bottom: 20px;
   flex-wrap: wrap;
+  animation: bounceIn 1s ease-in;
 }
 
 input, select {
   padding: 10px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
+  border-radius: 8px;
+  border: none;
   flex: 1;
   min-width: 200px;
   transition: box-shadow 0.3s;
@@ -171,25 +84,27 @@ input, select {
 
 input:focus, select:focus {
   outline: none;
-  box-shadow: 0 0 8px #007bff;
+  box-shadow: 0 0 8px #28a745;
 }
 
 button {
   padding: 10px 15px;
   border: none;
-  border-radius: 6px;
-  background-color: #007bff;
+  border-radius: 8px;
+  background-color: #28a745;
   color: white;
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
+  animation: pulse 2s infinite;
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #218838;
   transform: scale(1.05);
 }
 
+/* Lists */
 ul {
   list-style-type: none;
   padding: 0;
@@ -197,63 +112,137 @@ ul {
 }
 
 li {
-  background-color: #3e2424;
+  background-color: rgba(255, 255, 255, 0.1);
   padding: 12px;
   margin-bottom: 8px;
   border-radius: 6px;
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, background 0.2s ease;
   animation: fadeInItem 0.5s ease;
 }
 
 li:hover {
+  background: rgba(255, 255, 255, 0.2);
   transform: scale(1.02);
 }
 
+/* Delete Button inside list */
+.list-item-btn {
+  float: right;
+  background: crimson;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  padding: 3px 8px;
+  margin-left: 10px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.list-item-btn:hover {
+  background: darkred;
+}
+
+/* Filter section */
+.filter-section {
+  margin: 1rem 0;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.filter-section label {
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+/* Footer */
 footer {
   text-align: center;
   margin-top: 30px;
   font-size: 14px;
-  color: #777;
+  color: #eee;
   animation: fadeIn 2s ease;
 }
 
-/* Animations */
+/* Animation Classes */
+.fade-in {
+  animation: fadeIn 1s ease-in;
+}
+.slide-down {
+  animation: slideDown 1s ease-in-out;
+}
+.slide-up {
+  animation: slideUp 1s ease-in;
+}
+.zoom-in {
+  animation: zoomIn 1s ease;
+}
+.bounce-in {
+  animation: bounceIn 1s ease-in;
+}
+.btn-pulse {
+  animation: pulse 2s infinite;
+}
+
+/* Keyframe Animations */
 @keyframes fadeSlideUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes fadeInItem {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-50px); opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(50px); opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes zoomIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
+@keyframes bounceIn {
+  0%   { transform: scale(0.95); opacity: 0; }
+  60%  { transform: scale(1.05); opacity: 1; }
+  100% { transform: scale(1); }
+}
+
+@keyframes pulse {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.05); }
+  100% { transform: scale(1); }
 }
 
 @keyframes fadeBg {
-  from {
-    background: #ddd;
+  from { background: #444; }
+  to   { background: linear-gradient(to right, #ece9e6, #ffffff); }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  body {
+    padding: 10px;
+    flex-direction: column;
   }
-  to {
-    background: linear-gradient(to right, #ece9e6, #ffffff);
+
+  .container {
+    width: 100%;
+    padding: 20px;
+  }
+
+  input, select, button {
+    width: 100%;
   }
 }
