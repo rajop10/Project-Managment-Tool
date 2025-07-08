@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login & Signup</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                  url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      color: #fff;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      width: 380px;
+      animation: fadeIn 0.8s ease;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      font-size: 28px;
+      font-weight: 600;
+      color: #fff;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    form {
+      display: none;
+      flex-direction: column;
+    }
+
+    form.active {
+      display: flex;
+      animation: slideUp 0.5s ease;
+    }
+
+    input {
+      margin: 12px 0;
+      padding: 14px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      background: rgba(255, 255, 255, 0.9);
+      transition: all 0.3s;
+    }
+
+    input:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.3);
+      background: rgba(255, 255, 255, 1);
+    }
+
+    button {
+      padding: 14px;
+      background-color: #4CAF50;
+      border: none;
+      color: white;
+      font-size: 16px;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 15px;
+      transition: all 0.3s;
+      letter-spacing: 0.5px;
+    }
+
+    button:hover {
+      background-color: #45a049;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .toggle-link {
+      text-align: center;
+      margin-top: 20px;
+      cursor: pointer;
+      color: #ddd;
+      text-decoration: none;
+      transition: color 0.3s;
+      font-weight: 500;
+    }
+
+    .toggle-link:hover {
+      color: #fff;
+      text-decoration: underline;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+      from { 
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to { 
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2 id="form-title">Welcome Back</h2>
+
+    <!-- Login Form -->
+    <form id="loginForm" class="active" onsubmit="return loginUser(event)">
+      <input type="text" id="loginUsername" placeholder="Username" required />
+      <input type="password" id="loginPassword" placeholder="Password" required />
+      <button type="submit">Login</button>
+      <div class="toggle-link" onclick="toggleForms()">Don't have an account? <span style="color: #4CAF50;">Sign up</span></div>
+    </form>
+
+    <!-- Signup Form -->
+    <form id="signupForm" onsubmit="return signupUser(event)">
+      <input type="text" id="signupUsername" placeholder="Choose username" required />
+      <input type="password" id="signupPassword" placeholder="Create password" required />
+      <button type="submit">Create Account</button>
+      <div class="toggle-link" onclick="toggleForms()">Already have an account? <span style="color: #4CAF50;">Login</span></div>
+    </form>
+  </div>
+
+  <script>
+    const loginForm = document.getElementById("loginForm");
+    const signupForm = document.getElementById("signupForm");
+    const formTitle = document.getElementById("form-title");
+
+    function toggleForms() {
+      loginForm.classList.toggle("active");
+      signupForm.classList.toggle("active");
+      formTitle.innerText = loginForm.classList.contains("active") ? "Welcome Back" : "Create Account";
+    }
+
+    function signupUser(event) {
+      event.preventDefault();
+      const username = document.getElementById("signupUsername").value;
+      const password = document.getElementById("signupPassword").value;
+
+      if (username.length < 4) {
+        alert("Username must be at least 4 characters long");
+        return;
+      }
+
+      if (password.length < 6) {
+        alert("Password must be at least 6 characters long");
+        return;
+      }
+
+      localStorage.setItem("username", username);
+      localStorage.setItem("password", password);
+
+      alert("Account created successfully! Please login.");
+      toggleForms();
+    }
+
+    function loginUser(event) {
+      event.preventDefault();
+      const username = document.getElementById("loginUsername").value;
+      const password = document.getElementById("loginPassword").value;
+
+      const storedUsername = localStorage.getItem("username");
+      const storedPassword = localStorage.getItem("password");
+
+      if (username === storedUsername && password === storedPassword) {
+        localStorage.setItem('isLoggedIn', 'true');
+        window.location.href = "index.html";
+      } else {
+        alert("Invalid credentials. Please try again.");
+      }
+    }
+  </script>
+</body>
+</html>
