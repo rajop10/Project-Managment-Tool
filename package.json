@@ -2,7 +2,6 @@
   "name": "project-managment-tool",
   "version": "1.0.0",
   "main": "index.js",
-  "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
@@ -24,5 +23,6 @@
   },
   "devDependencies": {
     "nodemon": "^3.1.10"
-  }
+  },
+  "description": ""
 }

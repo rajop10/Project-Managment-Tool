@@ -1,23 +1,26 @@
-const http = require("http");
-const app = require("./app");
-const mongoose = require("mongoose");
-const dotenv = require("dotenv");
-const { Server } = require("socket.io");
+// Middleware first
+app.use(express.json());
+app.use(express.static(path.join(__dirname, 'public')));
 
-dotenv.config();
-
-const server = http.createServer(app);
-const io = new Server(server, { cors: { origin: "*" } });
-app.set("io", io);
-
-io.on("connection", (socket) => {
-  console.log("Client connected:", socket.id);
-  socket.on("task-update", () => io.emit("task-refresh"));
+// Then routes
+app.get('/api/test', (req, res) => {
+  res.json({ message: 'API is working' });
 });
 
-mongoose.connect(process.env.MONGO_URI)
-  .then(() => {
-    console.log("✅ MongoDB connected");
-    server.listen(process.env.PORT, () => console.log(`🚀 Server running on port ${process.env.PORT}`));
-  })
-  .catch(err => console.error("MongoDB error:", err));
+app.get('/login', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'login.html'));
+});
+
+app.get('/app', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+// Then the root route
+app.get('/', (req, res) => {
+  // Your auth check and redirect logic
+});
+
+// Finally 404 handler
+app.get("*", (req, res) => {
+  res.status(404).sendFile(path.join(__dirname, 'public', '404.html'));
+});
